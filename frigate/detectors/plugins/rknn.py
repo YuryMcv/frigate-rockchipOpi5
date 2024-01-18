@@ -34,7 +34,7 @@ yolov8_suffix = {
 
 
 class RknnDetectorConfig(BaseDetectorConfig):
-    type: Literal[DETECTOR_KEY]
+    type: Literal['rknn']
     core_mask: int = Field(default=0, ge=0, le=7, title="Core mask for NPU.")
 
 
@@ -43,9 +43,9 @@ class Rknn(DetectionApi):
 
     def __init__(self, config: RknnDetectorConfig):
         # create symlink for Home Assistant add on
-        if not os.path.isfile("/proc/device-tree/compatible"):
-            if os.path.isfile("/device-tree/compatible"):
-                os.symlink("/device-tree/compatible", "/proc/device-tree/compatible")
+       # if not os.path.isfile("/proc/device-tree/compatible"):
+        #    if os.path.isfile("/device-tree/compatible"):
+          #      os.symlink("/device-tree/compatible", "/proc/device-tree/compatible")
 
         # find out SoC
         try:
