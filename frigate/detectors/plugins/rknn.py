@@ -49,7 +49,7 @@ class Rknn(DetectionApi):
 
         # find out SoC
         try:
-            with open("/proc/device-tree/compatible") as file:
+            with open("/device-tree/compatible") as file:
                 soc = file.read().split(",")[-1].strip("\x00")
         except FileNotFoundError:
             logger.error("Make sure to run docker in privileged mode.")
